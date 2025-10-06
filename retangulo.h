@@ -1,5 +1,5 @@
-#ifndef circulo_h
-#define circulo_h
+#ifndef retangulo_h
+#define retangulo_h
 
 typedef void* RETANGULO;
 

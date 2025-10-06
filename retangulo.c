@@ -34,6 +34,8 @@ RETANGULO cria_retangulo(int i, double x, double y, double w, double h, char* co
         exit(1);
     }
     strcpy(c->corp, corp);
+
+    return (RETANGULO) r;
 }
 
 int get_i_retangulo (RETANGULO r){

@@ -36,7 +36,7 @@ CIRCULO cria_circulo(int i, double x, double y, double r, char* corb, char* corp
     }
     strcpy(c->corp, corp);
 
-    return c;
+    return (CIRCULO) c;
 }
 
 int get_i(CIRCULO c){

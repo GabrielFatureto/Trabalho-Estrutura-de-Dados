@@ -40,19 +40,19 @@ CIRCULO cria_circulo(int i, double x, double y, double r, char* corb, char* corp
 }
 
 int get_i(CIRCULO c){
-    return ((Circ*)c)->i;
+    return ((Circle*)c)->i;
 }
 
 double get_x_circulo(CIRCULO c){
-    return ((Circ*)c)->x;
+    return ((Circle*)c)->x;
 }
 
 double get_y_circulo(CIRCULO c){
-    return ((Circ*)c)->y;
+    return ((Circle*)c)->y;
 }
 
 double get_r(CIRCULO c){
-    return ((Circ*)c)->r;
+    return ((Circle*)c)->r;
 }
 
 double get_area(CIRCULO c){
@@ -60,35 +60,35 @@ double get_area(CIRCULO c){
 }
 
 char* get_corb(CIRCULO c){
-    return ((Circ*)c)->corb;
+    return ((Circle*)c)->corb;
 }
 
 char* get_corp(CIRCULO c){
-    return ((Circ*)c)->corp;
+    return ((Circle*)c)->corp;
 }
 
 void set_i (CIRCULO c, int i){
-    ((Circ*)c)->i = i;
+    ((Circle*)c)->i = i;
 }
 
 void set_x_circulo(CIRCULO c, double x){
-    ((Circ*)c)->x = x;
+    ((Circle*)c)->x = x;
 }
 
 void set_y_circulo(CIRCULO c, double y){
-    ((Circ*)c)->y = y;
+    ((Circle*)c)->y = y;
 }
 
 void set_corb(CIRCULO c, char* corb){
-    strcpy(((Circ*)c)->corb, corb);
+    strcpy(((Circle*)c)->corb, corb);
 }
 
 void set_corp(CIRCULO c, char* corp){
-    strcpy(((Circ*)c)->corp, corp);
+    strcpy(((Circle*)c)->corp, corp);
 }
 
 void excluir_circulo(CIRCULO c){
-    free(((Circ*)c)->corb);
-    free(((Circ*)c)->corp);
+    free(((Circle*)c)->corb);
+    free(((Circle*)c)->corp);
     free(c);
 }

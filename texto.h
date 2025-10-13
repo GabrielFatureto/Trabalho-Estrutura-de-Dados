@@ -84,7 +84,7 @@ void set_fSize (ESTILO e, char* fSize);
  /// @param txt Conteúdo do texto
  /// @return Retorna um ponteiro para a estrutura TEXTO criada
  */
-TEXTO criar_texto (int id, double x, double y, char* corb, char* corp, char a, char* txt);
+TEXTO criarTexto (int id, double x, double y, char* corb, char* corp, char a, char* txt);
 
 /**  
  /// @brief Obtém o identificador do texto

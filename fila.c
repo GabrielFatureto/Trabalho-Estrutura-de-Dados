@@ -16,7 +16,7 @@ typedef struct {
 
 
 FILA fila_criar() {
-    FILA f = (FILA) malloc(sizeof(Fila));
+    Fila f = (FILA) malloc(sizeof(Fila));
     if (f != NULL) {
         f->frente = NULL;
         f->tras = NULL;
@@ -25,38 +25,22 @@ FILA fila_criar() {
     return f;
 }
 
-// void fila_destruir(FILA f, void (*liberar_dado)(void*)) {
-//     if (f == NULL) return;
-
-//     No* atual = f->frente;
-//     while (atual != NULL) {
-//         No* proximo = atual->proximo;
-//         if (liberar_dado != NULL) {
-//             liberar_dado(atual->dado); // Libera o dado do usuário
-//         }
-//         free(atual); // Libera o nó da fila
-//         atual = proximo;
-//     }
-//     free(f); // Libera a estrutura da fila
-// }
 
 bool fila_enfileirar(FILA f, void* dado) {
     if (f == NULL) return false;
 
     No* novo_no = (No*) malloc(sizeof(No));
     if (novo_no == NULL) {
-        return false; // Falha na alocação de memória
+        return false; 
     }
 
     novo_no->dado = dado;
     novo_no->proximo = NULL;
 
     if (fila_esta_vazia(f)) {
-        // Se a fila está vazia, o novo nó é tanto o início quanto o fim
         f->frente = novo_no;
         f->tras = novo_no;
     } else {
-        // Adiciona o novo nó após o último e atualiza o ponteiro 'tras'
         f->tras->proximo = novo_no;
         f->tras = novo_no;
     }
@@ -73,15 +57,12 @@ void* fila_desenfileirar(FILA f) {
     No* no_removido = f->frente;
     void* dado_retornado = no_removido->dado;
 
-    // Avança o ponteiro 'frente' para o próximo nó
     f->frente = f->frente->proximo;
 
-    // Se a fila ficou vazia, atualiza também o ponteiro 'tras'
     if (f->frente == NULL) {
         f->tras = NULL;
     }
 
-    free(no_removido); // Libera a memória do nó
     f->tamanho--;
 
     return dado_retornado;
@@ -102,4 +83,11 @@ int fila_tamanho(FILA f) {
 bool fila_esta_vazia(FILA f) {
     if (f == NULL) return true;
     return f->tamanho == 0;
+}
+
+void destruir_fila(FILA f){
+    while(!fila_esta_vazia(f)){
+        fila_desenfileirar(f);
+    }
+    free(f);
 }

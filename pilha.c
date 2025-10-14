@@ -3,13 +3,13 @@
 #include "pilha.h"
 
 
-typedef struct No {
+typedef struct {
     void* dado;       
     struct No* proximo;
 } No;
 
 
-typedef struct Pilha {
+typedef struct {
     No* topo;         
     int tamanho;
 } Pilha;
@@ -23,34 +23,17 @@ PILHA pilha_criar() {
     return p;
 }
 
-// void pilha_destruir(PILHA p_ptr, void (*liberar_dado)(void*)) {
-//     if (p_ptr == NULL || *p_ptr == NULL) return;
-
-//     PILHA p = *p_ptr;
-//     No* atual = p->topo;
-//     while (atual != NULL) {
-//         No* proximo_no = atual->proximo;
-//         if (liberar_dado != NULL) {
-//             liberar_dado(atual->dado); // Libera o dado do usuário, se a função for fornecida
-//         }
-//         free(atual); // Libera o nó da pilha
-//         atual = proximo_no;
-//     }
-//     free(p); // Libera a estrutura da pilha
-//     *p_ptr = NULL; // Define o ponteiro original do usuário como NULL para segurança
-// }
-
 bool pilha_empilhar(PILHA p, void* dado) {
     if (p == NULL) return false;
 
     No* novo_no = (No*) malloc(sizeof(No));
     if (novo_no == NULL) {
-        return false; // Falha na alocação de memória
+        return false; 
     }
 
     novo_no->dado = dado;
-    novo_no->proximo = p->topo; // O novo nó aponta para o antigo topo
-    p->topo = novo_no;          // O topo da pilha agora é o novo nó
+    novo_no->proximo = p->topo; 
+    p->topo = novo_no;          
     p->tamanho++;
 
     return true;
@@ -64,9 +47,9 @@ void* pilha_desempilhar(PILHA p) {
     No* no_removido = p->topo;
     void* dado_retornado = no_removido->dado;
 
-    p->topo = p->topo->proximo; // O topo agora é o próximo elemento
+    p->topo = p->topo->proximo; 
 
-    free(no_removido); // Libera a memória do nó
+    free(no_removido); 
     p->tamanho--;
 
     return dado_retornado;
@@ -87,4 +70,11 @@ int pilha_tamanho(PILHA p) {
 bool pilha_esta_vazia(PILHA p) {
     if (p == NULL) return true;
     return p->tamanho == 0;
+}
+
+void destruir_pilha(PILHA p){
+    while(!pilha_esta_vazia(p)){
+        pilha_desempilhar(p);
+    }
+    free(p);
 }

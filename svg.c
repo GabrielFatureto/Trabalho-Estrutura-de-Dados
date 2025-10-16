@@ -22,7 +22,7 @@ void desenhar_LinhaSVG(FILE* svg, LINHA l) {
 }
 
 void desenhar_TextoSVG(FILE* svg, TEXTO t, ESTILO e) {
-    char a = getATexto(t);
+    char a = get_a(t);
     switch(a) {
         case 'i':
             fprintf(svg, "<text id=\"%d\" font-size=\"%s\" line-height=\"0\" text-anchor=\"start\" fill=\"%s\" stroke=\"%s\" font-family=\"%s\" y=\"%lf\" x=\"%lf\" stroke-width=\"%lf\" ><![CDATA[%s]]></text>\n", get_i_texto(t), get_fSize(e), get_corp_texto(t), get_corb_texto(t), get_fFamily(e), get_y_texto(t), get_x_texto(t), 1.0, get_txt(t));

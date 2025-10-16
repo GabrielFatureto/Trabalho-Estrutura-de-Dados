@@ -7,7 +7,8 @@
 typedef struct {
     int i;
     double x, y;
-    char* corb, corp;
+    char* corb;
+    char* corp;
     char a;
     char* texto;
 } Text;
@@ -57,11 +58,12 @@ char* get_fWeight (ESTILO e){
     return ((Stile*)e)->fWeight;
 }
 
-char* get_fSize (ESTTILO e){
+char* get_fSize (ESTILO e){
     return ((Stile*)e)->fSize;
 }
 
 void set_fFamily (ESTILO e, char* fFamily){
+    
     ((Stile*)e)->fFamily = (char*)malloc(strlen(fFamily)+1);
     if(((Stile*)e)->fFamily == NULL){
         printf("Erro na alocação de memória!!\n");
@@ -201,4 +203,15 @@ void excluir_texto (TEXTO t){
     free(((Text*)t)->texto);
     free(t);
 }
+
+void excluir_estilo(ESTILO e) {
+    Stile* s = (Stile*)e;
+    if (s == NULL) return;
+    
+    free(s->fFamily);
+    free(s->fWeight);
+    free(s->fSize);
+    free(s);
+}
+
 

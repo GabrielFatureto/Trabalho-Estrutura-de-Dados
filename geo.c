@@ -18,7 +18,7 @@ FILA ler_geo (FILE* arqgeo){
     FILA f = fila_criar();
 
     FILE* svg = fopen("saida.svg", "w");
-    startSVG(svg);
+    abrir_SVG(svg);
 
     double x, y, x1, y1, r, x2, y2, w, h;
     int i;

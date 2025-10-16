@@ -75,7 +75,7 @@ void set_fSize (ESTILO e, char* fSize);
 
 /**
  /// @brief Cria um texto com os atributos especificados
- /// @param id Identificador do texto
+ /// @param i Identificador do texto
  /// @param x Coordenada x da ancora do texto
  /// @param y Coordenada y da ancora do texto
  /// @param corb Cor da borda do texto
@@ -84,7 +84,7 @@ void set_fSize (ESTILO e, char* fSize);
  /// @param txt Conteúdo do texto
  /// @return Retorna um ponteiro para a estrutura TEXTO criada
  */
-TEXTO criarTexto (int id, double x, double y, char* corb, char* corp, char a, char* txt);
+TEXTO criarTexto (int i, double x, double y, char* corb, char* corp, char a, char* txt);
 
 /**  
  /// @brief Obtém o identificador do texto
@@ -190,5 +190,11 @@ void set_txt (TEXTO t, char* txt);
  /// @param t Ponteiro para a estrutura TEXTO
  */
 void excluir_texto (TEXTO t);
+
+/**
+ /// @brief Libera a memória alocada para a estrutura ESTILO
+ /// @param t Ponteiro para a estrutura ESTILO
+ */
+void excluir_estilo (ESTILO e);
 
 #endif
